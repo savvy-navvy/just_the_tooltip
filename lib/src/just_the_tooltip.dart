@@ -538,7 +538,7 @@ abstract class JustTheTooltipState<T> extends State<JustTheInterface>
   }
 
   void _handlePointerEvent(PointerEvent event) {
-    if (!hasEntry) {
+    if (!hasEntry || !widget.barrierDismissible) {
       return;
     }
 
