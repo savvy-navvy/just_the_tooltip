@@ -700,7 +700,10 @@ abstract class JustTheTooltipState<T> extends State<JustTheInterface>
               final scrollController = widget.scrollController;
               final wrappedChild = Material(
                 type: MaterialType.transparency,
-                child: widget.content,
+                child: GestureDetector(
+                  onTap: _hideTooltip,
+                  child: widget.content,
+                ),
               );
 
               if (scrollController != null) {
