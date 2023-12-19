@@ -466,6 +466,8 @@ abstract class JustTheTooltipState<T> extends State<JustTheInterface>
 
     if (_pressActivated) {
       _hideTimer ??= Timer(showDuration, () async {
+        if (!mounted) return;
+
         await _animationController.reverse();
         completer.complete();
       });
@@ -473,6 +475,8 @@ abstract class JustTheTooltipState<T> extends State<JustTheInterface>
       _hideTimer ??= Timer(
         hoverShowDuration,
         () async {
+          if (!mounted) return;
+
           await _animationController.reverse();
           completer.complete();
         },
