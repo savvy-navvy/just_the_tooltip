@@ -58,6 +58,7 @@ class JustTheTooltip extends StatefulWidget implements JustTheInterface {
     this.shadow,
     this.showWhenUnlinked = false,
     this.scrollController,
+    this.tapContentToDismiss = true,
   }) : super(key: key);
 
   @override
@@ -157,6 +158,9 @@ class JustTheTooltip extends StatefulWidget implements JustTheInterface {
 
   @override
   final ScrollController? scrollController;
+
+  @override
+  final bool tapContentToDismiss;
 
   @override
   JustTheTooltipState<OverlayEntry> createState() =>
@@ -705,7 +709,8 @@ abstract class JustTheTooltipState<T> extends State<JustTheInterface>
               final wrappedChild = Material(
                 type: MaterialType.transparency,
                 child: GestureDetector(
-                  onTap: _hideTooltip,
+                  behavior: HitTestBehavior.opaque,
+                  onTap: widget.tapContentToDismiss ? _hideTooltip : null,
                   child: widget.content,
                 ),
               );

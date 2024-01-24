@@ -254,4 +254,7 @@ abstract class JustTheInterface extends StatefulWidget {
   /// example, if the tooltip happens to go beyond its quadrant but there is
   /// scroll space beneath it the bounds will accomadate it.
   ScrollController? get scrollController;
+
+  /// If true, tapping on the content will dismiss the tooltip.
+  bool get tapContentToDismiss;
 }
